@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://j7h3qy5wweq5"]
+
+[ext_resource type="PackedScene" uid="uid://chpsxrw87eko8" path="res://assets/enemy/Alien Computer.glb" id="1_imx0u"]
+[ext_resource type="Script" uid="uid://0rqc0hasothx" path="res://scenes/patrol_CPU/patrol_cpu.gd" id="1_ql8mh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_imx0u"]
+points = PackedVector3Array(0.0261469, 0.206475, -0.0867037, -0.150086, -0.120948, -0.171445, 0.0281863, -0.120842, -0.171345, -0.124015, -0.0688808, 0.196076, -0.155653, 0.202588, -0.0879801, 0.0341186, -0.120059, 0.14624, 0.0338259, 0.202576, 0.0762736, -0.1558, 0.202818, 0.0764072, 0.0332841, -0.0306212, -0.20056, -0.191418, 0.0262138, 0.00656831, 0.0700536, 0.0323214, -0.0245268, -0.1558, -0.119805, 0.146019, 0.0324189, -0.0236116, 0.187072, -0.155159, -0.0306708, -0.200675, -0.154238, -0.0236103, 0.187069, -0.142226, 0.226123, 0.0629346, 0.0202386, 0.225769, -0.0744931, -0.123971, -0.068795, -0.207636, -0.142226, 0.226123, -0.0746346, 0.0202386, 0.225769, 0.0627931, 0.0336605, 0.202317, -0.0878303, 0.0693824, 0.0572156, 0.000330724, -0.00383925, -0.0948891, 0.184412, -0.190581, 0.044904, -0.0243387, 0.0343253, -0.120438, -0.164597, -0.1558, -0.119805, -0.164022, -0.12936, 0.200353, -0.0929423, -0.00381448, -0.113979, -0.189873, 0.0196685, -0.00472179, -0.191807, -0.124049, -0.113126, 0.170911, 0.070006, 0.0261208, 0.00660966, 0.00901157, -0.057102, -0.209343)
+
+[sub_resource type="Animation" id="Animation_5wi8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ql8mh"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [5.0, 0.0, 5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wi8p"]
+_data = {
+&"RESET": SubResource("Animation_5wi8p"),
+&"idle": SubResource("Animation_ql8mh")
+}
+
+[node name="PatrolCpu" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_ql8mh")
+
+[node name="Alien Computer" parent="." instance=ExtResource("1_imx0u")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_imx0u")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="hit_box" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hit_box"]
+shape = SubResource("ConvexPolygonShape3D_imx0u")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0621324, 0.252142, -0.0237949)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OmniLight3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_5wi8p")
+}
+
+[connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]

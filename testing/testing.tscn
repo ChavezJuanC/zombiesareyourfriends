@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4x48bjrhukd5"]
+
+[ext_resource type="PackedScene" uid="uid://dgu58es6oleup" path="res://scenes/main_char/main_character.tscn" id="1_sgbpx"]
+[ext_resource type="PackedScene" uid="uid://dg70eq3vyvf6w" path="res://scenes/breakable_barrel/breakable_barrel.tscn" id="3_oo1xa"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u8srb"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_sgbpx"]
+sky_material = SubResource("ProceduralSkyMaterial_u8srb")
+
+[sub_resource type="Environment" id="Environment_eape4"]
+background_mode = 2
+sky = SubResource("Sky_sgbpx")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Testing" type="Node3D"]
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_sgbpx")]
+transform = Transform3D(0.999608, 0, -0.0279914, 0, 1, 0, 0.0279914, 0, 0.999608, 0, 1.49136, 0.257051)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_eape4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4948, 0, 43.0226)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(57.9897, 1, 87.0452)
+
+[node name="BreakableBarrel" parent="." instance=ExtResource("3_oo1xa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.87584, 0.523289, 7.92077)
+has_key = true

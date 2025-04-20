@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://ysm065kaqkxq"]
+
+[ext_resource type="Script" uid="uid://cp3i42jy1uq60" path="res://scenes/main_menu/main_menu_hud.gd" id="1_dsxjs"]
+
+[node name="MainMenuHud" type="CanvasLayer"]
+script = ExtResource("1_dsxjs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.146014, 0.499096, 0.402703, 1)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 888.0
+offset_top = 736.0
+offset_right = 1040.0
+offset_bottom = 783.0
+text = "TO THE RESCUE"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 704.0
+offset_top = 152.0
+offset_right = 1216.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 20
+text = "They built the systems.
+Maintained the machines.
+
+No one could help them when the infection hit.
+
+Now the system keeps them locked away.
+
+They’re still your friends.
+And they deserve better.
+
+The backup key’s hidden in a supply barrel.
+
+Find it. Open their cell.
+Lead them out.
+
+But watch out...
+the computers that locked them in are still watching."
+autowrap_mode = 3
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

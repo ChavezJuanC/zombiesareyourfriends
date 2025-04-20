@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://dulf1ryhbc1r6"]
+
+[ext_resource type="PackedScene" uid="uid://dvrhymt5clre2" path="res://assets/building_parts/Doorway Front.glb" id="1_m554q"]
+[ext_resource type="Script" uid="uid://ylit5ieqk7qm" path="res://scenes/secure_door/secure_door.gd" id="1_ofddm"]
+[ext_resource type="PackedScene" uid="uid://b32mej4wkdsvw" path="res://assets/building_parts/Oculus Sensor.glb" id="2_a26iq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m554q"]
+resource_name = "colormap"
+cull_mode = 2
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_m554q"]
+material = SubResource("StandardMaterial3D_m554q")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a26iq"]
+size = Vector3(1.21509, 0.001, 0.949219)
+
+[sub_resource type="Animation" id="Animation_ofddm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Doorway Front/door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a26iq"]
+resource_name = "open_door"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Doorway Front/door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.23171, 0), Vector3(0, 0.417413, 0), Vector3(0, 0.668636, 0), Vector3(0, 1.05044, 0), Vector3(0, 1.22726, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ofddm"]
+_data = {
+&"RESET": SubResource("Animation_ofddm"),
+&"open_door": SubResource("Animation_a26iq")
+}
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a26iq"]
+points = PackedVector3Array(0.00267757, 1.01751, 0.104144, -0.494012, -0.00791156, -0.00800093, -0.494012, -0.00791156, 0.104144, -0.494012, 1.01751, -0.00800093, 0.00267757, -0.00791156, -0.00800093, 0.00267757, -0.00791156, 0.104144, -0.494012, 1.01751, 0.104144, 0.00267757, 1.01751, -0.00800093)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ofddm"]
+points = PackedVector3Array(0.00267757, 1.01751, 0.104144, -0.494012, -0.00791156, -0.00800093, -0.494012, -0.00791156, 0.104144, -0.494012, 1.01751, -0.00800093, 0.00267757, -0.00791156, -0.00800093, 0.00267757, -0.00791156, 0.104144, -0.494012, 1.01751, 0.104144, 0.00267757, 1.01751, -0.00800093)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iam82"]
+points = PackedVector3Array(-0.340836, 0.506016, 0.10461, -0.465443, -0.00778729, 0.0111619, -0.465443, -0.00778729, 0.0734481, -0.013868, -0.00778729, 0.0111619, -0.465443, 0.988987, 0.0111619, -0.013868, 0.988987, 0.0734481, -0.013868, -0.00778729, 0.0734481, -0.013868, 0.988987, 0.0111619, -0.43428, 0.506016, -0.0199873, -0.465443, 0.988987, 0.0734481, -0.340836, 0.475086, -0.0199873, -0.43428, 0.506016, 0.10461, -0.340836, 0.475086, 0.10461, -0.340836, 0.506016, -0.0199873)
+
+[node name="SecureDoor" type="StaticBody3D"]
+script = ExtResource("1_ofddm")
+
+[node name="Doorway Front" parent="." instance=ExtResource("1_m554q")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5082, 0, 0, 0, 0.482978, 0, 0, 0, 0.242192, -0.238357, 1.24526, 0.112187)
+mesh = SubResource("BoxMesh_m554q")
+
+[node name="Oculus Sensor" parent="." instance=ExtResource("2_a26iq")]
+transform = Transform3D(0.692065, -0.0359561, -0.720939, 0.718563, -0.0606679, 0.692811, -0.0686485, -0.99751, -0.0161495, -0.441351, 1.09856, 0)
+
+[node name="light_source" type="Node3D" parent="Oculus Sensor"]
+transform = Transform3D(1, 8.47033e-22, 1.94118e-22, -7.35902e-16, 1, 0, -3.21673e-23, 0, 1, -0.0317091, 0.157854, -0.0368524)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Oculus Sensor/light_source"]
+transform = Transform3D(0.527981, 0.660611, 0.533695, -0.543642, 0.745699, -0.385211, -0.65245, -0.0867549, 0.75285, -0.011678, -0.0117512, 0.00196135)
+light_color = Color(0, 0.685425, 0.362614, 1)
+light_energy = 10.0
+spot_angle = 26.4515
+
+[node name="scan_area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="scan_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.180154, 0.177471, -0.687277)
+shape = SubResource("BoxShape3D_a26iq")
+
+[node name="door_animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ofddm")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_a26iq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_ofddm")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_iam82")
+
+[connection signal="body_entered" from="scan_area" to="." method="_on_scan_area_body_entered"]
+
+[editable path="Doorway Front"]

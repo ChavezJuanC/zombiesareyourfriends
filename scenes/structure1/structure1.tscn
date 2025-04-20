@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn7s22ab6wd6u"]
+
+[ext_resource type="PackedScene" uid="uid://c0v677pssa44c" path="res://assets/kenny/conveyor-bars-stripe-side.glb" id="1_1om1y"]
+[ext_resource type="PackedScene" uid="uid://ugfc23dvoifd" path="res://assets/kenny/structure-high.glb" id="1_xb5lk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xb5lk"]
+size = Vector3(8.1, 2.8, 1)
+
+[node name="Structure1" type="StaticBody3D"]
+
+[node name="structure-high2" parent="." instance=ExtResource("1_xb5lk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.9, -2, 0)
+
+[node name="conveyor-bars-stripe-side" parent="." instance=ExtResource("1_1om1y")]
+
+[node name="structure-high3" parent="." instance=ExtResource("1_xb5lk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.9, -2, 0)
+
+[node name="structure-high4" parent="." instance=ExtResource("1_xb5lk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.9, -2, 0)
+
+[node name="conveyor-bars-stripe-side2" parent="." instance=ExtResource("1_1om1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="structure-high5" parent="." instance=ExtResource("1_xb5lk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.1, -2, 0)
+
+[node name="structure-high6" parent="." instance=ExtResource("1_xb5lk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.9, -2, 0)
+
+[node name="conveyor-bars-stripe-side3" parent="." instance=ExtResource("1_1om1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="structure-high7" parent="." instance=ExtResource("1_xb5lk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.1, -2, 0)
+
+[node name="structure-high8" parent="." instance=ExtResource("1_xb5lk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6.9, -2, 0)
+
+[node name="conveyor-bars-stripe-side4" parent="." instance=ExtResource("1_1om1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="structure-high9" parent="." instance=ExtResource("1_xb5lk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -5.1, -2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95, -0.8, 0)
+shape = SubResource("BoxShape3D_xb5lk")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm61m0mpnrn6s"]
+
+[ext_resource type="PackedScene" uid="uid://bupbdk58psysi" path="res://assets/boxes/Cardboard Boxes-rdKKO0DvMG.glb" id="1_2bycy"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2bycy"]
+points = PackedVector3Array(-0.0134271, -0.01, 0, -0.0134271, -0.01, 0.0260775, -0.0134271, 0.00978454, 0, 0.0134271, -0.01, 0, -0.0134271, 0.00978648, 0.0260775, 0.0134271, -0.01, 0.0260775, -0.0134271, 0.00978648, 0.0215722, 0.00399026, 0.00978648, 0.00210591, 0.0134271, 0.00978454, 0, 0.0134271, 0.00978648, 0.0260775, 0.010922, 0.00978648, 0.00210591, 0.0134271, 0.00978648, 0.0215722)
+
+[node name="Box" type="StaticBody3D"]
+
+[node name="Root Scene" parent="." instance=ExtResource("1_2bycy")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(36.3273, 6.15845e-22, 8.33377e-22, -8.33377e-22, -5.54704e-06, 36.3273, 4.80789e-22, -46.5319, -4.33056e-06, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_2bycy")
+
+[editable path="Root Scene"]

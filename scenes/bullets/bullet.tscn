@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://c761s2be21aw6"]
+
+[ext_resource type="Script" uid="uid://cesgmvf52woix" path="res://scenes/bullets/bullet.gd" id="1_2flq5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5f1na"]
+albedo_color = Color(0.537255, 0.796078, 0.717647, 1)
+emission_enabled = true
+emission = Color(0.167788, 0.823633, 0.893961, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_lj7gv"]
+material = SubResource("StandardMaterial3D_5f1na")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2flq5"]
+size = Vector3(0.0681152, 0.064209, 1.17407)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2flq5"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2flq5"]
+albedo_color = Color(0.537255, 0.796078, 0.717647, 1)
+emission_enabled = true
+emission = Color(0.168627, 0.823529, 0.894118, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2flq5"]
+material = SubResource("StandardMaterial3D_2flq5")
+size = Vector3(0.04, 0.04, 0.04)
+
+[node name="bullet" type="RigidBody3D" groups=["bullet"]]
+script = ExtResource("1_2flq5")
+
+[node name="bullet_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -0.0687051, 0, 0.0639301, 0, 1, 0, -3.0032e-09, 0, 0, 0)
+mesh = SubResource("BoxMesh_lj7gv")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.34443)
+target_position = Vector3(0, 0, -1)
+
+[node name="bullet_hitbox2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000344954, -0.0267334)
+shape = SubResource("BoxShape3D_2flq5")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.530794)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2flq5")
+draw_pass_1 = SubResource("BoxMesh_2flq5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
