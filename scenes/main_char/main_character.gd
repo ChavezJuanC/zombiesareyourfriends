@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const WALK_SPEED: float = 4.0;
-const RUN_SPEED: float = 7.0
+const WALK_SPEED: float = 3.7;
+const RUN_SPEED: float = 5.5
 var speed : float;
 const JUMP_VELOCITY: float = 4.5
 const SENSITIVITY: float = 0.005;
@@ -20,6 +20,8 @@ var bullet : Resource = load("res://scenes/bullets/bullet.tscn");
 var bullet_instance;
 @onready var gun_animation_player : AnimationPlayer = $head/Camera3D/hand/gun/AnimationPlayer;
 @onready var barrel : Node3D = $head/Camera3D/hand/gun/barrel;
+@onready var gun_audio_player : AudioStreamPlayer3D = $head/Camera3D/hand/gun/gun_auido_player;
+
 
 ##attacked
 var on_attacked_cooldown : bool = false;
@@ -69,6 +71,8 @@ func _physics_process(delta: float) -> void:
 	
 func _shoot() -> void:
 	if !gun_animation_player.is_playing():
+		##sound effect here
+		gun_audio_player.play();
 		gun_animation_player.play("shot", 0, 1.5);
 		bullet_instance = bullet.instantiate();
 		bullet_instance.global_transform = barrel.global_transform; # <- Fixed!

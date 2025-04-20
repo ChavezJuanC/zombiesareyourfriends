@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://bu2bttw7p7t7a" path="res://scenes/fan/fan.gd" id="1_4stmw"]
 [ext_resource type="PackedScene" uid="uid://dy3gr8j1i2keb" path="res://assets/fan/Fan.glb" id="1_odgjl"]
 
+[sub_resource type="Animation" id="Animation_4stmw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_odgjl"]
 resource_name = "spin"
 length = 0.9
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.628319, 0), Vector3(0, 1.25664, 0), Vector3(0, 1.88496, 0), Vector3(0, 2.51327, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.76991, 0), Vector3(0, 4.39823, 0), Vector3(0, 5.02655, 0), Vector3(0, 6.28319, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_4stmw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4stmw"]

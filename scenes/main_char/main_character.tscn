@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgu58es6oleup"]
+[gd_scene load_steps=9 format=3 uid="uid://dgu58es6oleup"]
 
 [ext_resource type="Script" uid="uid://cr2huxpn0lav7" path="res://scenes/main_char/main_character.gd" id="1_a7bw5"]
 [ext_resource type="PackedScene" uid="uid://inwswgetjs37" path="res://assets/gun/Pistol.glb" id="2_ehk6n"]
+[ext_resource type="AudioStream" uid="uid://dgur08qiy08ce" path="res://sounds/sound_effects/gun_shot.wav" id="3_ix0wc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ngvrx"]
 
@@ -104,6 +105,9 @@ target_position = Vector3(0, 0, -1)
 
 [node name="barrel" type="Node3D" parent="head/Camera3D/hand/gun"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.63252, 0.533772, 1.19209e-07)
+
+[node name="gun_auido_player" type="AudioStreamPlayer3D" parent="head/Camera3D/hand/gun"]
+stream = ExtResource("3_ix0wc")
 
 [node name="hit_box" type="Area3D" parent="."]
 

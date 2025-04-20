@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var player: CharacterBody3D = null
-var MOVEMENT_SPEED: float = randf_range(2.5, 3.5);
+var MOVEMENT_SPEED: float = randf_range(3.1, 3.5);
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D;
 
 func _ready() -> void:

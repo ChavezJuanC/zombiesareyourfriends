@@ -28,7 +28,7 @@ func _spawn_key() -> void:
 	key_instance = key.instantiate();
 	key_instance.global_transform = global_transform;
 	get_parent().add_child(key_instance);
-	key_instance.global_position.y += 0.75;
+	key_instance.global_position.y += 1;
 	if key_instance.has_signal("player_picked_up_key"):
 		emit_signal("player_collected_key");
 		print("gate key has been collected");
