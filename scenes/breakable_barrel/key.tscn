@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvot3xltw5qrw"]
+[gd_scene load_steps=10 format=3 uid="uid://cvot3xltw5qrw"]
 
 [ext_resource type="PackedScene" uid="uid://bw4ukbxrdiuud" path="res://assets/key/Key.fbx" id="1_i66h1"]
 [ext_resource type="Script" uid="uid://c1nb0y7ucaqw1" path="res://scenes/breakable_barrel/key.gd" id="1_odaoo"]
+[ext_resource type="Texture2D" uid="uid://0jwaceaju2px" path="res://assets/keybinds/keyboard_e_outline.png" id="3_msp5j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i66h1"]
 size = Vector3(0.244141, 0.5354, 0.0537109)
@@ -84,7 +85,14 @@ shape = SubResource("BoxShape3D_odaoo")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.309804, 0.439216, 0.431373, 1)
-light_energy = 4.0
+light_energy = 2.0
+omni_range = 1.5259
+
+[node name="interaction_hud" type="CanvasLayer" parent="."]
+
+[node name="KeyboardEOutline" type="Sprite2D" parent="interaction_hud"]
+position = Vector2(960, 512)
+texture = ExtResource("3_msp5j")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
