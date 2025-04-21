@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://b2flvhu0rfnb7"]
+[gd_scene load_steps=37 format=4 uid="uid://b2flvhu0rfnb7"]
 
 [ext_resource type="PackedScene" uid="uid://dgu58es6oleup" path="res://scenes/main_char/main_character.tscn" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://dyfvauvma1wba" path="res://scenes/building_parts/wall.tscn" id="2_6iamk"]
@@ -54,16 +54,8 @@ shadow_color = Color(0.145098, 0.498039, 0.403922, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la82b"]
 resource_name = "black"
 vertex_color_use_as_albedo = true
-albedo_color = Color(0, 0.745098, 0.745098, 1)
+albedo_color = Color(0.0117647, 0, 0, 1)
 emission_enabled = true
-emission = Color(0, 0.745098, 0.745098, 1)
-emission_energy_multiplier = 3.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkypq"]
-albedo_color = Color(5.19812e-06, 0.743283, 0.744183, 1)
-emission_enabled = true
-emission = Color(0, 0.745098, 0.745098, 1)
-emission_energy_multiplier = 5.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6n5w6"]
 _surfaces = [{
@@ -71,7 +63,6 @@ _surfaces = [{
 "format": 34359742465,
 "index_count": 324,
 "index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYACAAJAAoACgALAAgACQAIAAwADAAIAAsADQAKAAkACwAKAA0ADAAOAAkACQAOAA0ACwAPAAwADgAMAA8ADQAPAAsADwANAA4AEAARABIAEgATABAAEQAQABQAFAAQABMAFQASABEAEwASABUAFAAWABEAEQAWABUAEwAXABQAFgAUABcAFQAXABMAFwAVABYAGAAZABoAGgAbABgAGQAYABwAHAAYABsAHQAaABkAGwAaAB0AHAAeABkAGQAeAB0AGwAfABwAHgAcAB8AHQAfABsAHwAdAB4AIAAhACIAIgAjACAAIQAgACQAJAAgACMAJQAiACEAIwAiACUAJAAmACEAIQAmACUAIwAnACQAJgAkACcAJQAnACMAJwAlACYAKAApACoAKQAoACsAKgAsACgAKwAoACwAKgApAC0AKwAtACkALQAuACoALAAqAC4ALQArAC8ALAAvACsALwAuAC0ALgAvACwAMAAxADIAMQAwADMAMgA0ADAAMwAwADQAMgAxADUAMwA1ADEANQA2ADIANAAyADYANQAzADcANAA3ADMANwA2ADUANgA3ADQAOAA5ADoAOQA4ADsAOgA8ADgAOwA4ADwAOgA5AD0AOwA9ADkAPQA+ADoAPAA6AD4APQA7AD8APAA/ADsAPwA+AD0APgA/ADwAQABBAEIAQQBAAEMAQgBEAEAAQwBAAEQAQgBBAEUAQwBFAEEARQBGAEIARABCAEYARQBDAEcARABHAEMARwBGAEUARgBHAEQA"),
-"material": SubResource("StandardMaterial3D_mkypq"),
 "name": "black",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -992,16 +983,16 @@ transform = Transform3D(0.7, 0, -4.17232e-08, 0, 0.7, 0, 4.17232e-08, 0, 0.7, -1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6, 0, 10.2)
 
 [node name="ZombieFriend" parent="zombies" instance=ExtResource("21_mkypq")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -1.6, 1.4, 3.7)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -1.6, 1.4, -5.1)
 
 [node name="ZombieFriend2" parent="zombies" instance=ExtResource("21_mkypq")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3, 1.3, 4.9)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -3, 1.3, -3.9)
 
 [node name="ZombieFriend3" parent="zombies" instance=ExtResource("21_mkypq")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.6, 1.3, 1.9)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.6, 1.3, -6.9)
 
 [node name="ZombieFriend4" parent="zombies" instance=ExtResource("21_mkypq")]
-transform = Transform3D(0.73, 0, 0, 0, 0.73, 0, 0, 0, 0.73, -2.6, 1.3, 1)
+transform = Transform3D(0.73, 0, 0, 0, 0.73, 0, 0, 0, 0.73, -2.6, 1.3, -7.8)
 
 [node name="in_game_hud" type="CanvasLayer" parent="."]
 script = ExtResource("7_oc4kc")
@@ -1387,22 +1378,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3, 1.4, 21.8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_mkypq")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="gate"]
-
-[node name="Label" type="Label" parent="gate/CanvasLayer"]
-offset_left = 856.0
-offset_top = 456.0
-offset_right = 1194.0
-offset_bottom = 491.0
-theme_override_font_sizes/font_size = 15
-text = "If you have the key press [E]"
-
 [connection signal="player_takes_damage" from="MainCharacter" to="in_game_hud" method="_on_main_character_player_takes_damage"]
 [connection signal="player_collected_key" from="barrels/BreakableBarrel" to="gate" method="_on_breakable_barrel_player_collected_key"]
-[connection signal="gate_opened" from="gate" to="building_parts/wall_perimeter/wall_2/SecureDoor" method="_on_gate_gate_opened"]
-[connection signal="gate_opened" from="gate" to="zombies/ZombieFriend" method="_on_gate_gate_opened"]
-[connection signal="gate_opened" from="gate" to="zombies/ZombieFriend2" method="_on_gate_gate_opened"]
-[connection signal="gate_opened" from="gate" to="zombies/ZombieFriend3" method="_on_gate_gate_opened"]
-[connection signal="gate_opened" from="gate" to="zombies/ZombieFriend4" method="_on_gate_gate_opened"]
 [connection signal="body_entered" from="gate/Area3D" to="gate" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="gate/Area3D" to="gate" method="_on_area_3d_body_exited"]

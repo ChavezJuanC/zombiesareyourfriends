@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const WALK_SPEED: float = 3.7;
-const RUN_SPEED: float = 25 ##5.5
+const RUN_SPEED: float = 5.4;
 var speed : float;
 const JUMP_VELOCITY: float = 4.5
 const SENSITIVITY: float = 0.005;
@@ -21,7 +21,6 @@ var bullet_instance;
 @onready var gun_animation_player : AnimationPlayer = $head/Camera3D/hand/gun/AnimationPlayer;
 @onready var barrel : Node3D = $head/Camera3D/hand/gun/barrel;
 @onready var gun_audio_player : AudioStreamPlayer3D = $head/Camera3D/hand/gun/gun_auido_player;
-
 
 ##attacked
 var on_attacked_cooldown : bool = false;

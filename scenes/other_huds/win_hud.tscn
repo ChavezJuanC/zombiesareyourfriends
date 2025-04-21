@@ -5,14 +5,14 @@
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.439216, 0.647059, 0.678431, 1)
+color = Color(0.109804, 0.164706, 0.203922, 1)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 766.0
 offset_top = 250.0
 offset_right = 1155.0
 offset_bottom = 627.0
-theme_override_colors/font_color = Color(0.121569, 0.164706, 0.207843, 1)
+theme_override_colors/font_color = Color(0.517647, 0.913725, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "They’re free now.
 

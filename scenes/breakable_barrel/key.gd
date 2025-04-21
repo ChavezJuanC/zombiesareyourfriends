@@ -17,6 +17,7 @@ func _ready() -> void:
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range and !collected:
 		collected = true;
+		interacton_hud.visible = false;
 		key_animation_player.play("collected");
 
 func _on_body_entered(body: Node3D) -> void:
@@ -27,7 +28,6 @@ func _on_body_entered(body: Node3D) -> void:
 func _on_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false;
-		interacton_hud.visible = false;
 
 func _on_key_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "collected":

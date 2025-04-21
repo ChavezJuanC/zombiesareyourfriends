@@ -5,6 +5,7 @@ var player: CharacterBody3D = null
 var MOVEMENT_SPEED: float = randf_range(2.3, 2.5);
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D;
 @onready var zombie_animation_player : AnimationPlayer = $AuxScene/AnimationPlayer;
+@onready var audio_loop_player : AudioStreamPlayer3D = $audio_loop_player;
 
 func _ready() -> void:
 	var players = get_tree().get_nodes_in_group("player")
@@ -12,6 +13,14 @@ func _ready() -> void:
 	if players.size() > 0:
 		player = players[0]
 	
+	_start_sound_loop();
+
+func _start_sound_loop() -> void:
+	await get_tree().create_timer(randf_range(0.1, 3)).timeout;
+	audio_loop_player.unit_size = 3.0;
+	audio_loop_player.volume_db = 0.5;
+	audio_loop_player.pitch_scale = 0.8;
+	audio_loop_player.play();
 
 func _physics_process(_delta: float) -> void:
 	if chase:

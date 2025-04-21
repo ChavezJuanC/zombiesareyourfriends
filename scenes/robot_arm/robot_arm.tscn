@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3lg1nvesbxbr"]
+
+[ext_resource type="PackedScene" uid="uid://dyebffi2ssq4k" path="res://assets/kenny/robot-arm-a.fbx" id="1_thcs4"]
+[ext_resource type="Script" uid="uid://cgo6q883tx05j" path="res://scenes/robot_arm/robot_arm.gd" id="1_vith7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_thcs4"]
+points = PackedVector3Array(0, 0, -0.5, -0.353563, 0, -0.353563, 0, 0.3, -0.400059, 0.353465, 0, -0.353563, -0.5, 0, 0, -0.400059, 0.3, 0, -0.28289, 0.3, -0.28289, 0.282792, 0.3, -0.28289, 0.5, 0, 0, -0.353563, 0, 0.353465, -0.28289, 0.3, 0.282792, 0.399961, 0.3, 0, 0.282792, 0.3, 0.282792, 0.353465, 0, 0.353465, 0, 0, 0.5, 0, 0.3, 0.399961)
+
+[sub_resource type="Animation" id="Animation_vith7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("robot-arm-a/robot_arm_a/element_a/element_b/element_c/element_d/element_e:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.703351, -1.56251, -0.265168)]
+}
+
+[sub_resource type="Animation" id="Animation_thcs4"]
+resource_name = "idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("robot-arm-a/robot_arm_a/element_a/element_b/element_c/element_d/element_e:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.703351, -1.56251, -0.265168), Vector3(0.650256, -2.02893, -0.560639), Vector3(0.696073, -1.39914, -0.159817), Vector3(0.669696, -1.93723, -0.504389), Vector3(0.703228, -1.59464, -0.285947), Vector3(0.69851, -1.71097, -0.361015), Vector3(0.701347, -1.66127, -0.328997)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vith7"]
+_data = {
+&"RESET": SubResource("Animation_vith7"),
+&"idle": SubResource("Animation_thcs4")
+}
+
+[node name="robot_arm" type="StaticBody3D"]
+script = ExtResource("1_vith7")
+
+[node name="robot-arm-a" parent="." instance=ExtResource("1_thcs4")]
+
+[node name="element_c" parent="robot-arm-a/robot_arm_a/element_a/element_b" index="0"]
+transform = Transform3D(0.64679, -0.762668, 0, 0.762668, 0.64679, 0, 0, 0, 1, 0, 0.6, -1.22725e-14)
+
+[node name="element_e" parent="robot-arm-a/robot_arm_a/element_a/element_b/element_c/element_d" index="0"]
+transform = Transform3D(0.177492, -0.621978, -0.762653, -0.199876, 0.736022, -0.646777, 0.96361, 0.267234, 0.00631973, 1.19209e-07, 0.6, -1.22725e-14)
+
+[node name="element_f" parent="robot-arm-a/robot_arm_a/element_a/element_b/element_c/element_d/element_e" index="0"]
+transform = Transform3D(0.980792, 0.0649117, 0.183937, 0.0735317, 0.750384, -0.6569, -0.180664, 0.657807, 0.731198, 0, 0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_thcs4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vith7")
+}
+
+[editable path="robot-arm-a"]
